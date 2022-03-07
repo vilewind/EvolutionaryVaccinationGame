@@ -1,10 +1,39 @@
-import sys
+'''
+Author: Vilewind
+Date: 2022-01-08 21:49:41
+LastEditors: Vilewind
+LastEditTime: 2022-03-06 09:52:44
+FilePath: /EoN/EvolutionaryVaccinationGame/setup.py
+Version: 
+Description: 
+'''
+"""
+Author: Vilewind
+Date: 2022-01-08 20:48:05
+LastEditors: Vilewind
+LastEditTime: 2022-01-08 21:46:47
+FilePath: /event_driven-SIR/setup.py
+Version: 
+Description: 
+"""
+"""
+Author: Vilewind
+Date: 2021-12-30 10:58:16
+LastEditors: Vilewind
+LastEditTime: 2021-12-30 14:12:55
+FilePath: /evolution_multi_process/setup.py
+Version: 
+Description: 
+"""
 
-from pybind11 import get_cmake_dir
+
 # Available at setup time due to pyproject.toml
+
+import sys
+from glob import glob
+from pybind11 import get_cmake_dir
 from pybind11.setup_helpers import Pybind11Extension, build_ext
 from setuptools import setup
-
 __version__ = "0.0.1"
 
 # The main interface is through Pybind11Extension.
@@ -17,18 +46,19 @@ __version__ = "0.0.1"
 #   reproducible builds (https://github.com/pybind/python_example/pull/53)
 
 ext_modules = [
-    Pybind11Extension("python_example",
-        ["src/main.cpp"],
+    Pybind11Extension(
+        "LVE",
+        sorted(glob("src/*.cpp")),
         # Example: passing in the version to the compiled code
-        define_macros = [('VERSION_INFO', __version__)],
-        ),
+        define_macros=[("VERSION_INFO", __version__)],
+    ),
 ]
 
 setup(
-    name="python_example",
+    name="LVE",
     version=__version__,
-    author="Sylvain Corlay",
-    author_email="sylvain.corlay@gmail.com",
+    author="vilewind",
+    author_email="luochengx2019@163.com",
     url="https://github.com/pybind/python_example",
     description="A test project using pybind11",
     long_description="",
